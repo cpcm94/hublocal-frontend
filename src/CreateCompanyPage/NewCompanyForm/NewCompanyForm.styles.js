@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import { TextField } from '@mui/material'
 import { Button } from '@mui/material'
-
 export const StyledTextField = styled(TextField)`
   margin: 0.75rem 0 !important;
 
@@ -23,9 +22,17 @@ export const StyledTextField = styled(TextField)`
   }
 `
 
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 0 1.25rem;
+`
+
 export const StyledButton = styled(Button)`
   height: 3.5rem;
   width: 14rem;
+  margin-top: 1rem !important;
   align-self: center;
   && {
     color: white;
@@ -36,14 +43,4 @@ export const StyledButton = styled(Button)`
   &&:hover {
     background-color: #9c2d41;
   }
-`
-export const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  width: min(100% - 2.5rem, 25rem);
-`
-export const Wrapper = styled.div`
-  margin-top: 35px;
-  display: flex;
-  justify-content: center;
 `

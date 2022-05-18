@@ -47,7 +47,6 @@ export const SigninForm = ({ toggleShowSignupForm }) => {
         return response.json()
       })
       .then((json) => {
-        console.log(json)
         saveTokens(json.accessToken)
         navigateToCompanies()
         window.location.reload()

@@ -8,7 +8,7 @@ export const Title = styled.div`
   text-overflow: ellipsis;
   flex: 1;
   align-self: center;
-  padding-left: 1rem;
+  padding-left: ${({ returnButton }) => returnButton && '1.25rem'};
 `
 export const HeaderWrapper = styled.div`
   display: flex;
@@ -20,4 +20,5 @@ export const HeaderWrapper = styled.div`
   height: 2.5rem;
   z-index: 2;
   overflow: hidden;
+  padding-left: 1.25rem;
 `

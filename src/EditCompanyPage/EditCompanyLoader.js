@@ -1,12 +1,13 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { CompaniesPage } from './CompaniesPage'
-
+import { useNavigate, useParams } from 'react-router-dom'
 import { getTokens } from '../AuthTokens/getTokens'
-import { useNavigate } from 'react-router-dom'
+import { EditableCompany } from './EditableCompany'
 
-export const CompaniesPageLoader = () => {
+export const EditCompanyLoader = () => {
+  let { companyId } = useParams()
   const user = getTokens()
-  const [companies, setCompanies] = useState(null)
+
+  const [company, setCompany] = useState(null)
   const [loading, setLoading] = useState(true)
 
   let navigate = useNavigate()
@@ -18,25 +19,21 @@ export const CompaniesPageLoader = () => {
   useEffect(() => {
     if (!user) navigateToHome()
 
-    fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/companies`, {
+    fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/companies/${companyId}`, {
       method: 'GET',
       headers: {
         'x-access-token': user,
       },
     })
       .then((response) => response.json())
-      .then((json) => setCompanies(json))
+      .then((json) => setCompany(json))
       .catch((error) => console.log(error))
       .finally(() => setLoading(false))
-  }, [navigateToHome, user])
+  }, [companyId, navigateToHome, user])
 
-  return (
-    <>
-      {loading ? (
-        <div> Loading...</div>
-      ) : (
-        <CompaniesPage companies={companies} />
-      )}
-    </>
+  return loading ? (
+    <span>Loading...</span>
+  ) : (
+    <EditableCompany company={company} />
   )
 }

@@ -3,18 +3,36 @@ import { Header } from '../_shared/Header/Header'
 import { Layout } from '../_shared/Layout'
 import { Container } from '../_shared/Container'
 import { Company } from './Company/Company'
-import { CompaniesList } from './CompaniesPage.styles'
+import { AddCompanyButton, CompaniesList } from './CompaniesPage.styles'
+import { useNavigate } from 'react-router-dom'
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
 
 export const CompaniesPage = ({ companies }) => {
+  let navigate = useNavigate()
+
+  const navigateToCompany = (id) => {
+    navigate(`/editCompany/${id}`)
+  }
+
+  const navigateToCreateCompany = () => {
+    navigate(`/createCompany`)
+  }
   return (
     <Layout>
       <Header title={'Empresas'} />
       <Container>
         <CompaniesList>
           {companies.map((company) => (
-            <Company key={company.id} company={company} />
+            <Company
+              key={company.id}
+              company={company}
+              navigateToCompany={navigateToCompany}
+            />
           ))}
         </CompaniesList>
+        <AddCompanyButton onClick={navigateToCreateCompany}>
+          <AddCircleOutlineIcon sx={{ color: 'white' }} />
+        </AddCompanyButton>
       </Container>
     </Layout>
   )
