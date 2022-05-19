@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { CompaniesPageLoader } from './CompaniesPage/CompaniesPageLoader'
 import { CreateCompanyPage } from './CreateCompanyPage/CreateCompanyPage'
 import { EditCompanyPage } from './EditCompanyPage/EditCompanyPage'
+import { LocationsRoute } from './LocationsPage/LocationsRoute'
 import { SigninPageLoader } from './SigninPage/SigninPageLoader'
 
 const App = () => {
@@ -13,6 +14,7 @@ const App = () => {
           <Route path='/editCompany/*' element={<EditCompanyPage />} />
           <Route path='/createCompany' element={<CreateCompanyPage />} />
           <Route path='/companies' element={<CompaniesPageLoader />} />
+          <Route path='/companies/*' element={<LocationsRoute />} />
           <Route path='/' element={<SigninPageLoader />} />
         </Routes>
       </>

@@ -17,6 +17,10 @@ export const CompaniesPage = ({ companies }) => {
   const navigateToCreateCompany = () => {
     navigate(`/createCompany`)
   }
+
+  const navigateToLocations = (id) => {
+    navigate(`/companies/${id}`)
+  }
   return (
     <Layout>
       <Header title={'Empresas'} />
@@ -27,6 +31,7 @@ export const CompaniesPage = ({ companies }) => {
               key={company.id}
               company={company}
               navigateToCompany={navigateToCompany}
+              navigateToLocations={navigateToLocations}
             />
           ))}
         </CompaniesList>
