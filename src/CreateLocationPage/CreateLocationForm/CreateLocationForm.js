@@ -134,7 +134,6 @@ export const CreateLocationForm = ({ navigateToLocations, companyId }) => {
       })
   }, [locationData])
 
-  console.log(disableSubmitButton)
   return (
     <Wrapper>
       <StyledTextField

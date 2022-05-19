@@ -4,9 +4,11 @@ import { CompaniesPageLoader } from './CompaniesPage/CompaniesPageLoader'
 import { CreateCompanyPage } from './CreateCompanyPage/CreateCompanyPage'
 import { CreateLocationPage } from './CreateLocationPage/CreateLocationPage'
 import { EditCompanyPage } from './EditCompanyPage/EditCompanyPage'
-import { LocationsRoute } from './LocationsPage/LocationsRoute'
+import { EditLocationLoader } from './EditLocationPage/EditLocationLoader'
+import { EditTicketLoader } from './EditTicketPage/EditTicketLoader'
+import { LocationsLoader } from './LocationsPage/LocationsLoader'
 import { SigninPageLoader } from './SigninPage/SigninPageLoader'
-import { TicketsRoute } from './TicketsPage/TicketsRoute'
+import { TicketsLoader } from './TicketsPage/TicketsLoader'
 
 const App = () => {
   return (
@@ -16,12 +18,23 @@ const App = () => {
           <Route path='/editCompany/*' element={<EditCompanyPage />} />
           <Route path='/createCompany' element={<CreateCompanyPage />} />
           <Route path='/companies' element={<CompaniesPageLoader />} />
-          <Route path='/companies/*' element={<LocationsRoute />} />
+          <Route path='/companies/:companyId' element={<LocationsLoader />} />
           <Route
             path='/companies/:companyId/createLocation'
             element={<CreateLocationPage />}
           />
-          <Route path='/companies/:companyId/*' element={<TicketsRoute />} />
+          <Route
+            path='/companies/:companyId/:locationId'
+            element={<TicketsLoader />}
+          />
+          <Route
+            path='/companies/:companyId/editLocation/:locationId'
+            element={<EditLocationLoader />}
+          />
+          <Route
+            path='/companies/:companyId/:locationId/editTicket/:ticketId'
+            element={<EditTicketLoader />}
+          />
           <Route path='/' element={<SigninPageLoader />} />
         </Routes>
       </>

@@ -14,7 +14,7 @@ export const CreateLocationPage = () => {
   const navigateToLocations = () => {
     navigate(`/companies/${companyId}`)
   }
-  console.log(companyId)
+
   return (
     <Layout>
       <Header title={'Criação de local'} returnButton={navigateToLocations} />

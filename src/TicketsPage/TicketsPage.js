@@ -5,7 +5,6 @@ import { Container } from '../_shared/Container'
 import { Ticket } from './Ticket/Ticket'
 import { TicketsList } from './TicketsPage.styles'
 import { useMatch, useNavigate, useParams } from 'react-router-dom'
-import { AddElementButton } from '../_shared/AddElementButton'
 
 export const TicketsPage = ({ tickets }) => {
   let navigate = useNavigate()
@@ -16,12 +15,18 @@ export const TicketsPage = ({ tickets }) => {
     navigate(`${pathname}/editTicket/${id}`)
   }
 
-  const navigateToCreateTicket = () => {
-    navigate(`${pathname}/createTicket`)
-  }
-
   const navigateToLocations = () => {
     navigate(`/companies/${companyId}`)
+  }
+  const getSortedTickets = () => {
+    let ordering = {}
+    const sortOrder = ['PENDENTE', 'PROGRESSO', 'CONCLUÍDO']
+
+    for (let i = 0; i < sortOrder.length; i++) ordering[sortOrder[i]] = i
+
+    return [...tickets].sort(function (a, b) {
+      return ordering[a.status] - ordering[b.status]
+    })
   }
 
   return (
@@ -29,7 +34,7 @@ export const TicketsPage = ({ tickets }) => {
       <Header title={'Tickets'} returnButton={navigateToLocations} />
       <Container>
         <TicketsList>
-          {tickets.map((ticket) => (
+          {getSortedTickets().map((ticket) => (
             <Ticket
               key={ticket.id}
               ticket={ticket}
@@ -37,7 +42,6 @@ export const TicketsPage = ({ tickets }) => {
             />
           ))}
         </TicketsList>
-        <AddElementButton onClick={navigateToCreateTicket} />
       </Container>
     </Layout>
   )
