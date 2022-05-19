@@ -6,6 +6,7 @@ import { CreateLocationPage } from './CreateLocationPage/CreateLocationPage'
 import { EditCompanyPage } from './EditCompanyPage/EditCompanyPage'
 import { LocationsRoute } from './LocationsPage/LocationsRoute'
 import { SigninPageLoader } from './SigninPage/SigninPageLoader'
+import { TicketsRoute } from './TicketsPage/TicketsRoute'
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
             path='/companies/:companyId/createLocation'
             element={<CreateLocationPage />}
           />
+          <Route path='/companies/:companyId/*' element={<TicketsRoute />} />
           <Route path='/' element={<SigninPageLoader />} />
         </Routes>
       </>

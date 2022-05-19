@@ -1,6 +1,6 @@
 import React from 'react'
-import EditIcon from '@mui/icons-material/Edit'
-import { CompanyName, EditButton, Wrapper } from './Company.styles'
+import { EditButton } from '../../_shared/EditButton'
+import { CompanyName, Wrapper } from './Company.styles'
 
 export const Company = ({
   company,
@@ -12,9 +12,7 @@ export const Company = ({
       <CompanyName onClick={() => navigateToLocations(company.id)}>
         {company.name}
       </CompanyName>
-      <EditButton onClick={() => navigateToCompany(company.id)}>
-        <EditIcon />
-      </EditButton>
+      <EditButton onClick={() => navigateToCompany(company.id)} />
     </Wrapper>
   )
 }

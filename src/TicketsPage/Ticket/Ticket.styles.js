@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   flex: 1;
   cursor: pointer;
 `
-export const CompanyName = styled.div`
+export const TicketName = styled.div`
   flex: 1;
   padding: 1.25rem;
 

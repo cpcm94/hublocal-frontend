@@ -3,9 +3,9 @@ import { Header } from '../_shared/Header/Header'
 import { Layout } from '../_shared/Layout'
 import { Container } from '../_shared/Container'
 import { Company } from './Company/Company'
-import { AddCompanyButton, CompaniesList } from './CompaniesPage.styles'
+import { CompaniesList } from './CompaniesPage.styles'
 import { useNavigate } from 'react-router-dom'
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
+import { AddElementButton } from '../_shared/AddElementButton'
 
 export const CompaniesPage = ({ companies }) => {
   let navigate = useNavigate()
@@ -35,9 +35,7 @@ export const CompaniesPage = ({ companies }) => {
             />
           ))}
         </CompaniesList>
-        <AddCompanyButton onClick={navigateToCreateCompany}>
-          <AddCircleOutlineIcon sx={{ color: 'white' }} />
-        </AddCompanyButton>
+        <AddElementButton onClick={navigateToCreateCompany} />
       </Container>
     </Layout>
   )

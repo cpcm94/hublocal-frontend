@@ -3,9 +3,9 @@ import { Header } from '../_shared/Header/Header'
 import { Layout } from '../_shared/Layout'
 import { Container } from '../_shared/Container'
 import { Location } from './Location/Location'
-import { AddLocationButton, LocationsList } from './LocationsPage.styles'
+import { LocationsList } from './LocationsPage.styles'
 import { useMatch, useNavigate } from 'react-router-dom'
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
+import { AddElementButton } from '../_shared/AddElementButton'
 
 export const LocationsPage = ({ locations }) => {
   let navigate = useNavigate()
@@ -23,9 +23,9 @@ export const LocationsPage = ({ locations }) => {
     navigate('/companies')
   }
 
-  // const navigateToTickets = () => {
-  //   navigate()
-  // }
+  const navigateToTickets = (id) => {
+    navigate(`${pathname}/${id}`)
+  }
   return (
     <Layout>
       <Header title={'Locais'} returnButton={navigateToCompanies} />
@@ -36,12 +36,11 @@ export const LocationsPage = ({ locations }) => {
               key={location.id}
               location={location}
               navigateToEditLocation={navigateToEditLocation}
+              navigateToTickets={navigateToTickets}
             />
           ))}
         </LocationsList>
-        <AddLocationButton onClick={navigateToCreateLocation}>
-          <AddCircleOutlineIcon sx={{ color: 'white' }} />
-        </AddLocationButton>
+        <AddElementButton onClick={navigateToCreateLocation} />
       </Container>
     </Layout>
   )

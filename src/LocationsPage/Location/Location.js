@@ -1,20 +1,18 @@
 import React from 'react'
-import EditIcon from '@mui/icons-material/Edit'
-import { LocationName, EditButton, Wrapper } from './Location.styles'
+import { EditButton } from '../../_shared/EditButton'
+import { LocationName, Wrapper } from './Location.styles'
 
 export const Location = ({
   location,
   navigateToEditLocation,
-  navigateToLocations,
+  navigateToTickets,
 }) => {
   return (
     <Wrapper>
-      <LocationName onClick={() => navigateToLocations(location.id)}>
+      <LocationName onClick={() => navigateToTickets(location.id)}>
         {location.name}
       </LocationName>
-      <EditButton onClick={() => navigateToEditLocation(location.id)}>
-        <EditIcon />
-      </EditButton>
+      <EditButton onClick={() => navigateToEditLocation(location.id)} />
     </Wrapper>
   )
 }
