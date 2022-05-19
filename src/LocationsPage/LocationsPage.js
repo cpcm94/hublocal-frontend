@@ -4,23 +4,28 @@ import { Layout } from '../_shared/Layout'
 import { Container } from '../_shared/Container'
 import { Location } from './Location/Location'
 import { AddLocationButton, LocationsList } from './LocationsPage.styles'
-import { useNavigate } from 'react-router-dom'
+import { useMatch, useNavigate } from 'react-router-dom'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
 
 export const LocationsPage = ({ locations }) => {
   let navigate = useNavigate()
+  let { pathname } = useMatch('/companies/:companyId')
 
   const navigateToEditLocation = (id) => {
-    navigate(`/editLocation/${id}`)
+    navigate(`${pathname}/editLocation/${id}`)
   }
 
   const navigateToCreateLocation = () => {
-    navigate(`/createLocation`)
+    navigate(`${pathname}/createLocation`)
   }
 
   const navigateToCompanies = () => {
     navigate('/companies')
   }
+
+  // const navigateToTickets = () => {
+  //   navigate()
+  // }
   return (
     <Layout>
       <Header title={'Locais'} returnButton={navigateToCompanies} />

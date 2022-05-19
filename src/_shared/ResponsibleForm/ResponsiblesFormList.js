@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
-import { StyledButton } from './NewCompanyForm.styles'
-import { ResponsibleForm } from './ResponsibleForm/ResponsibleForm'
+import { StyledButton } from '../../CreateCompanyPage/NewCompanyForm/NewCompanyForm.styles'
+import { ResponsibleForm } from './ResponsibleForm'
 
 export const ResponsiblesFormList = ({ responsibles, setResponsibles }) => {
   const updateResponsibles = useCallback(

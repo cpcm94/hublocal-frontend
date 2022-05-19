@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { StyledTextField } from '../NewCompanyForm.styles'
+import { StyledTextField } from '../../CreateCompanyPage/NewCompanyForm/NewCompanyForm.styles'
 import { DeleteButton, Label, Wrapper } from './ResponsibleForm.styles'
 import DeleteIcon from '@mui/icons-material/Delete'
 import { toast } from 'react-toastify'
-import { toastConfig } from '../../../_shared/toastConfig'
+import { toastConfig } from '../toastConfig'
 
 export const ResponsibleForm = ({
   responsible,
@@ -39,6 +39,8 @@ export const ResponsibleForm = ({
 
     if (lastRunCEP.current === responsible.CEP) return
 
+    lastRunCEP.current = responsible.CEP
+
     fetch(
       `https://ws.apicep.com/cep/${responsible.CEP.substring(
         0,
@@ -70,16 +72,13 @@ export const ResponsibleForm = ({
             district: '',
           })
           const newResponsible = { ...responsibleData }
-          newResponsible['address'] = 'teste'
+          newResponsible['address'] = ''
           setResponsibleData(newResponsible)
           updateResponsibles(newResponsible)
         }
       })
       .catch((error) => {
         toast.error(error.message, toastConfig)
-      })
-      .finally(() => {
-        lastRunCEP.current = responsible.CEP
       })
   }, [responsible.CEP, responsibleData, updateResponsibles])
 

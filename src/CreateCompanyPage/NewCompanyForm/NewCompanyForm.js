@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import { Wrapper, StyledTextField, StyledButton } from './NewCompanyForm.styles'
 import MenuItem from '@mui/material/MenuItem'
 import { toast } from 'react-toastify'
-import { ResponsiblesFormList } from './ResponsiblesFormList'
+import { ResponsiblesFormList } from '../../_shared/ResponsibleForm/ResponsiblesFormList'
 import { toastConfig } from '../../_shared/toastConfig'
+import { getTokens } from '../../AuthTokens/getTokens'
 
-export const NewCompanyForm = ({ user, navigateToCompanies }) => {
+export const NewCompanyForm = ({ navigateToCompanies }) => {
+  const user = getTokens()
   const [companyData, setCompanyData] = useState({
     description: '',
     name: '',
@@ -31,7 +33,7 @@ export const NewCompanyForm = ({ user, navigateToCompanies }) => {
     companyData.name.trim() === '' ||
     companyData.CNPJ.trim() === '' ||
     companyData.main_responsible.trim() === '' ||
-    responsibles.filter(
+    !!responsibles.filter(
       (responsible) =>
         responsible.name.trim() === '' ||
         responsible.CEP.trim() === '' ||
