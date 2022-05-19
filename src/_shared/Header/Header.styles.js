@@ -8,7 +8,7 @@ export const Title = styled.div`
   text-overflow: ellipsis;
   flex: 1;
   align-self: center;
-  padding-left: ${({ returnButton }) => returnButton && '1.25rem'};
+  padding-left: ${({ returnButton }) => returnButton && '0.75rem'};
 `
 export const HeaderWrapper = styled.div`
   display: flex;

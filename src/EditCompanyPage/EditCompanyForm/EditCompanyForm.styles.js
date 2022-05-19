@@ -44,3 +44,30 @@ export const StyledButton = styled(Button)`
     background-color: #9c2d41;
   }
 `
+export const ResponsiblesWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.25rem;
+  border: 1px solid var(--primary-color);
+  border-radius: 5px;
+  margin: 0.5rem 0;
+`
+export const Label = styled.label`
+  font-weight: bold;
+`
+export const DeleteButton = styled(Button)`
+  height: 3.5rem;
+  width: 5rem;
+  align-self: center;
+  && {
+    color: white;
+    margin: 3rem 0 2rem 0;
+  }
+  &.MuiButton-contained {
+    background-color: var(--primary-color);
+  }
+  &&:hover {
+    background-color: #9c2d41;
+  }
+`

@@ -22,7 +22,7 @@ export const ResponsiblesFormList = ({ responsibles, setResponsibles }) => {
   const addResponsible = () => {
     const updatedResponsibles = [
       ...responsibles,
-      { name: '', address: '', contact_number: '' },
+      { name: '', address: '', contact_number: '', CEP: '' },
     ]
     setResponsibles(updatedResponsibles)
   }
