@@ -3,6 +3,7 @@ import { CompaniesPage } from './CompaniesPage'
 
 import { getTokens } from '../AuthTokens/getTokens'
 import { useNavigate } from 'react-router-dom'
+import { LoadingSpinner } from '../_shared/LoadingSpinner'
 
 export const CompaniesPageLoader = () => {
   const user = getTokens()
@@ -33,7 +34,7 @@ export const CompaniesPageLoader = () => {
   return (
     <>
       {loading ? (
-        <div> Loading...</div>
+        <LoadingSpinner isLoading={loading} />
       ) : (
         <CompaniesPage companies={companies} />
       )}

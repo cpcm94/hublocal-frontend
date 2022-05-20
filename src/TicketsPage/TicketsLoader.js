@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { TicketsPage } from './TicketsPage'
 import { useNavigate, useParams } from 'react-router-dom'
 import { getTokens } from '../AuthTokens/getTokens'
+import { LoadingSpinner } from '../_shared/LoadingSpinner'
 
 export const TicketsLoader = () => {
   let { locationId } = useParams()
@@ -36,6 +37,12 @@ export const TicketsLoader = () => {
   }, [locationId, navigateToHome, user])
 
   return (
-    <>{loading ? <div> Loading...</div> : <TicketsPage tickets={tickets} />}</>
+    <>
+      {loading ? (
+        <LoadingSpinner isLoading={loading} />
+      ) : (
+        <TicketsPage tickets={tickets} />
+      )}
+    </>
   )
 }

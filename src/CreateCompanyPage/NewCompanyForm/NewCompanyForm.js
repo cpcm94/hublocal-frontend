@@ -5,6 +5,7 @@ import { toast } from 'react-toastify'
 import { ResponsiblesFormList } from '../../_shared/ResponsibleForm/ResponsiblesFormList'
 import { toastConfig } from '../../_shared/toastConfig'
 import { getTokens } from '../../AuthTokens/getTokens'
+import { LoadingSpinner } from '../../_shared/LoadingSpinner'
 
 export const NewCompanyForm = ({ navigateToCompanies }) => {
   const user = getTokens()
@@ -60,7 +61,6 @@ export const NewCompanyForm = ({ navigateToCompanies }) => {
       .then((res) => res.json())
       .then((json) => {
         if (!json.message) {
-          toast.success('Empresa criada com sucesso', toastConfig)
           navigateToCompanies()
         } else {
           toast.error(json.message, toastConfig)
@@ -111,7 +111,7 @@ export const NewCompanyForm = ({ navigateToCompanies }) => {
         setResponsibles={setResponsibles}
       />
       {loading ? (
-        <span>Loading...</span>
+        <LoadingSpinner isLoading={loading} />
       ) : (
         <StyledButton
           disabled={disableSubmitButton}

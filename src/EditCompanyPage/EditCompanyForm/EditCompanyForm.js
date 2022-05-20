@@ -12,6 +12,7 @@ import { toast } from 'react-toastify'
 import { getTokens } from '../../AuthTokens/getTokens'
 import { toastConfig } from '../../_shared/toastConfig'
 import DeleteIcon from '@mui/icons-material/Delete'
+import { LoadingSpinner } from '../../_shared/LoadingSpinner'
 
 export const EditCompanyForm = ({ company, navigateToCompanies }) => {
   const user = getTokens()
@@ -50,12 +51,11 @@ export const EditCompanyForm = ({ company, navigateToCompanies }) => {
         CNPJ: companyData.CNPJ,
       }),
     })
-      .then((res) => res.json())
-      .then((json) => {
-        if (json.id) {
+      .then((res) => {
+        if (res.status === 200) {
           toast.success('Alterações salvas com sucesso!', toastConfig)
         } else {
-          toast.error(json.message, toastConfig)
+          res.json().then((json) => toast.error(json.message, toastConfig))
         }
       })
       .catch((error) => toast.error(error.message, toastConfig))
@@ -120,18 +120,21 @@ export const EditCompanyForm = ({ company, navigateToCompanies }) => {
           <Label>Responsável {index + 1}</Label>
           <ResponsiblesWrapper>
             <StyledTextField
+              disabled
               type='text'
               variant='outlined'
               label='Responsável'
               value={responsible.name}
             />
             <StyledTextField
+              disabled
               type='text'
               variant='outlined'
               label='Endereço'
               value={responsible.address}
             />
             <StyledTextField
+              disabled
               type='text'
               variant='outlined'
               label='Telefone'
@@ -141,7 +144,7 @@ export const EditCompanyForm = ({ company, navigateToCompanies }) => {
         </Fragment>
       ))}
       {loading ? (
-        <span>Loading...</span>
+        <LoadingSpinner isLoading={loading} />
       ) : (
         <>
           <StyledButton

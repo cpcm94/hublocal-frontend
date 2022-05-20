@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { LocationsPage } from './LocationsPage'
 import { useNavigate, useParams } from 'react-router-dom'
 import { getTokens } from '../AuthTokens/getTokens'
+import { LoadingSpinner } from '../_shared/LoadingSpinner'
 
 export const LocationsLoader = () => {
   let { companyId } = useParams()
@@ -38,7 +39,7 @@ export const LocationsLoader = () => {
   return (
     <>
       {loading ? (
-        <div> Loading...</div>
+        <LoadingSpinner isLoading={loading} />
       ) : (
         <LocationsPage locations={locations} />
       )}

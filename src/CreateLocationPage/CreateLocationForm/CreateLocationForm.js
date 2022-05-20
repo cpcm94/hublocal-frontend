@@ -9,6 +9,7 @@ import { toast } from 'react-toastify'
 import { toastConfig } from '../../_shared/toastConfig'
 import { getTokens } from '../../AuthTokens/getTokens'
 import { ResponsiblesFormList } from '../../_shared/ResponsibleForm/ResponsiblesFormList'
+import { LoadingSpinner } from '../../_shared/LoadingSpinner'
 
 export const CreateLocationForm = ({ navigateToLocations, companyId }) => {
   const user = getTokens()
@@ -75,7 +76,6 @@ export const CreateLocationForm = ({ navigateToLocations, companyId }) => {
       .then((res) => res.json())
       .then((json) => {
         if (!json.message) {
-          toast.success('Local criado com sucesso', toastConfig)
           navigateToLocations()
         } else {
           toast.error(json.message, toastConfig)
@@ -197,7 +197,7 @@ export const CreateLocationForm = ({ navigateToLocations, companyId }) => {
         setResponsibles={setResponsibles}
       />
       {loading ? (
-        <span>Loading...</span>
+        <LoadingSpinner isLoading={loading} />
       ) : (
         <StyledButton
           disabled={disableSubmitButton}

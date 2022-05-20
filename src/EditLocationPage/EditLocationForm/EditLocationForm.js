@@ -13,6 +13,7 @@ import { getTokens } from '../../AuthTokens/getTokens'
 import { toastConfig } from '../../_shared/toastConfig'
 import DeleteIcon from '@mui/icons-material/Delete'
 import { v4 as uuidv4 } from 'uuid'
+import { LoadingSpinner } from '../../_shared/LoadingSpinner'
 
 export const EditLocationForm = ({ location, navigateToLocations }) => {
   const user = getTokens()
@@ -246,18 +247,21 @@ export const EditLocationForm = ({ location, navigateToLocations }) => {
           <Label>Responsável {index + 1}</Label>
           <ResponsiblesWrapper>
             <StyledTextField
+              disabled
               type='text'
               variant='outlined'
               label='Responsável'
               value={responsible.name}
             />
             <StyledTextField
+              disabled
               type='text'
               variant='outlined'
               label='Endereço'
               value={responsible.address}
             />
             <StyledTextField
+              disabled
               type='text'
               variant='outlined'
               label='Telefone'
@@ -267,7 +271,7 @@ export const EditLocationForm = ({ location, navigateToLocations }) => {
         </Fragment>
       ))}
       {loading ? (
-        <span>Loading...</span>
+        <LoadingSpinner isLoading={loading} />
       ) : (
         <>
           <StyledButton

@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { getTokens } from '../AuthTokens/getTokens'
+import { LoadingSpinner } from '../_shared/LoadingSpinner'
 import { EditLocationPage } from './EditLocationPage'
 
 export const EditLocationLoader = () => {
@@ -39,7 +40,7 @@ export const EditLocationLoader = () => {
   }, [companyId, locationId, navigateToHome, user])
 
   return loading ? (
-    <span>Loading...</span>
+    <LoadingSpinner isLoading={loading} />
   ) : (
     <EditLocationPage
       location={location}

@@ -8,6 +8,7 @@ import {
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { toastConfig } from '../../_shared/toastConfig'
+import { LoadingSpinner } from '../../_shared/LoadingSpinner'
 
 export const SignupForm = ({ toggleShowSignupForm }) => {
   const [user, setUser] = useState({
@@ -81,7 +82,7 @@ export const SignupForm = ({ toggleShowSignupForm }) => {
           onChange={handleConfirmPasswordChange}
         />
         {loading ? (
-          <span>Loading...</span>
+          <LoadingSpinner isLoading={loading} />
         ) : (
           <StyledButton
             disabled={disableSubmitButton}

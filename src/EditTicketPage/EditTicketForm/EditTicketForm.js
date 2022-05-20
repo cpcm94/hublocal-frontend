@@ -12,6 +12,7 @@ import { getTokens } from '../../AuthTokens/getTokens'
 import { toastConfig } from '../../_shared/toastConfig'
 import { toast } from 'react-toastify'
 import { MenuItem } from '@mui/material'
+import { LoadingSpinner } from '../../_shared/LoadingSpinner'
 
 export const EditTicketForm = ({ ticket, users, navigateToTickets }) => {
   const user = getTokens()
@@ -47,7 +48,7 @@ export const EditTicketForm = ({ ticket, users, navigateToTickets }) => {
         'x-access-token': user,
       },
     })
-      .then((res) => navigateToTickets())
+      .then(() => navigateToTickets())
       .catch((error) => toast.error(error.message, toastConfig))
       .finally(() => setLoading(false))
   }
@@ -70,7 +71,6 @@ export const EditTicketForm = ({ ticket, users, navigateToTickets }) => {
       }),
     })
       .then(() => {
-        toast.success('Ticket atualizado com sucesso', toastConfig)
         navigateToTickets()
       })
       .catch((error) => toast.error(error.message, toastConfig))
@@ -194,7 +194,7 @@ export const EditTicketForm = ({ ticket, users, navigateToTickets }) => {
       </UpdatedInfoWrapper>
 
       {loading ? (
-        <span>Loading...</span>
+        <LoadingSpinner isLoading={loading} />
       ) : (
         <>
           <StyledButton variant='contained' onClick={onTicketUpdate}>

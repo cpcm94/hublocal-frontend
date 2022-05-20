@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { getTokens } from '../AuthTokens/getTokens'
+import { LoadingSpinner } from '../_shared/LoadingSpinner'
 import { EditTicketPage } from './EditTicketPage'
 
 export const EditTicketLoader = () => {
@@ -56,7 +57,7 @@ export const EditTicketLoader = () => {
   }, [ticket, users])
 
   return loading ? (
-    <span>Loading...</span>
+    <LoadingSpinner isLoading={loading} />
   ) : (
     <EditTicketPage
       ticket={ticket}
