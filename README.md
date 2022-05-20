@@ -10,6 +10,12 @@ Install necessary packages by running `npm install`
 
 The only required environment variable necessary to be set is the backend endpoint.
 
+To run locally just add the variable name and its value before the build command, for example:
+
+```
+REACT_APP_API_ENDPOINT=endpoint/for/your/backend npm start
+```
+
 | Variable               | Description               |
 | ---------------------- | ------------------------- |
 | REACT_APP_API_ENDPOINT | Endpoint for your backend |
