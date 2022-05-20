@@ -52,7 +52,7 @@ export const SigninForm = ({ toggleShowSignupForm }) => {
           navigateToCompanies()
           window.location.reload()
         } else {
-          toast.error('Usuário ou senha incorreta')
+          toast.error('Usuário ou senha incorreta', toastConfig)
         }
       })
       .catch((error) => toast.error(error.message, toastConfig))
