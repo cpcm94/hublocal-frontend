@@ -47,9 +47,13 @@ export const SigninForm = ({ toggleShowSignupForm }) => {
         return response.json()
       })
       .then((json) => {
-        saveTokens(json.accessToken)
-        navigateToCompanies()
-        window.location.reload()
+        if (json.accessToken) {
+          saveTokens(json.accessToken)
+          navigateToCompanies()
+          window.location.reload()
+        } else {
+          toast.error('Usuário ou senha incorreta')
+        }
       })
       .catch((error) => toast.error(error.message, toastConfig))
   }
