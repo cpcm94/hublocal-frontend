@@ -16,7 +16,7 @@ export const ResponsibleForm = ({
     name: responsible.name,
     CEP: responsible.CEP,
     contact_number: responsible.contact_number,
-    address: responsible.adress,
+    address: responsible.adress ? responsible.address : '',
   })
   const [addressFields, setAddressFields] = useState({
     address: '',
@@ -61,6 +61,7 @@ export const ResponsibleForm = ({
           newResponsible[
             'address'
           ] = `${json.state} - ${json.city} - ${json.district} - ${json.address}`
+
           setResponsibleData(newResponsible)
           updateResponsibles(newResponsible)
         } else {
